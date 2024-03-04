@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Hello hello hello</title>
-    </head>
-<body>
-    <h1> This is a headline </h1>
-    <h2> Headline 2 </h2>
-    <p> paragraph text </p>
-</body>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Camera and Scene Setup -->
+      <a-camera position="0 1.6 0"></a-camera>
+      <a-box 
+        position="0 1.6 -3" 
+        color="#4CC3D9" 
+        rotation="0 45 0" 
+        scale="2 2 2"
+        animation="property: rotation; to: 0 405 0; loop: true; dur: 20000; easing: linear"
+        event-set__mouseenter="_event: mouseenter; color: #EF2D5E"
+        event-set__mouseleave="_event: mouseleave; color: #4CC3D9"
+      ></a-box>
+      <!-- Light -->
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="directional" intensity="0.5" position="-1 1 0"></a-light>
+    </a-scene>
+  </body>
 </html>
