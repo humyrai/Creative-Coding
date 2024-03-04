@@ -1,6 +1,4 @@
 # Creative-Coding
-# Project Showcase
-
 Welcome to my GitHub repository! This project highlights my exploration of HTML, CSS, A-Frame, and p5.js.
 
 ## Contents
