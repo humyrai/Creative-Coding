@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('cube-generator', {
+        init: function () {
+          var sceneEl = this.el;
+          var interval = 2000; // Time interval between cube generation (in milliseconds)
+          setInterval(function () {
+            // Generate a new cube
+            var cube = document.createElement('a-box');
+            cube.setAttribute('width', '1');
+            cube.setAttribute('height', '1');
+            cube.setAttribute('depth', '1');
+            // Randomly select color for each cube
+            var colors = ['#FBC02D', '#FFEB3B'];
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            cube.setAttribute('color', randomColor);
+            // Randomize position along Z-axis within the runway
+            var posZ = Math.random() * 10 - 5;
+            cube.setAttribute('position', '0 1.5 ' + posZ);
+            sceneEl.appendChild(cube);
+
+            // Animate cube moving towards the camera
+            cube.setAttribute('animation', {
+              property: 'position',
+              to: '0 1.5 -5', // Position of the camera
+              dur: 3000, // Duration of animation (in milliseconds)
+              easing: 'linear',
+              loop: false
+            });
+
+            // Remove the cube after the animation ends
+            setTimeout(function () {
+              sceneEl.removeChild(cube);
+            }, 3000);
+          }, interval);
+        }
+      });
+    </script>
+  </head>
+  <body style="background-color: #292F54;">
+    <a-scene cube-generator>
+      <!-- Camera -->
+      <a-entity position="0 1.6 0">
+        <a-camera></a-camera>
+      </a-entity>
+      
+      <!-- Ground -->
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="20" color="#00BCD4"></a-plane>
+      
+      <!-- Runway Strips -->
+      <a-plane position="0 0 -3.9" rotation="-90 0 0" width="1" height="20" color="#FFF"></a-plane>
+      <a-plane position="0 0 -4.1" rotation="-90 0 0" width="1" height="20" color="#FFF"></a-plane>
+    </a-scene>
+  </body>
+</html>
