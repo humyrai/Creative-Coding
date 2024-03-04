@@ -8,16 +8,16 @@
           var sceneEl = this.el;
           var interval = 2000; // Time interval between cube generation (in milliseconds)
           setInterval(function () {
-            // Generate a new cube
+            // cubes
             var cube = document.createElement('a-box');
             cube.setAttribute('width', '1');
             cube.setAttribute('height', '1');
             cube.setAttribute('depth', '1');
-            // Randomly select color for each cube
-            var colors = ['#FBC02D', '#FFEB3B'];
+            // color for each cube
+            var colors = ['#EAC435', '#CA1551', '#FB4D3D'];
             var randomColor = colors[Math.floor(Math.random() * colors.length)];
             cube.setAttribute('color', randomColor);
-            // Randomize position along Z-axis within the runway
+            // position along Z-axis
             var posZ = Math.random() * 10 - 5;
             cube.setAttribute('position', '0 1.5 ' + posZ);
             sceneEl.appendChild(cube);
