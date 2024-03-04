@@ -4,9 +4,7 @@ let scalar = 5;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
-  stroke(255);
-  strokeWeight(2);
-  noFill();
+  noStroke();
 }
 
 function draw() {
@@ -14,7 +12,16 @@ function draw() {
   let radius = scalar * angle;
   let x = radius * cos(angle);
   let y = radius * sin(angle);
-  ellipse(x, y, 5, 5);
+  
+  // Define gradient colors and positions
+  let c1 = color(110, 68, 255);
+  let c2 = color(255, 144, 117);
+  let interpColor = lerpColor(c1, c2, angle / (4 * PI)); // Interpolated color
+  
+  // Draw circle with gradient fill
+  fill(interpColor);
+  ellipse(x, y, 10, 10);
+  
   angle += 0.1;
   scalar += 0.005;
 
