@@ -1,11 +1,8 @@
 let particles = [];
 let numParticles = 100;
-let angle = 0;
-let discoTimer = 0;
-let discoInterval = 500; // Interval for color change (in milliseconds)
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL); // Enable WebGL mode
+  createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < numParticles; i++) {
     particles.push(new Particle(random(width), random(height)));
   }
@@ -13,23 +10,6 @@ function setup() {
 
 function draw() {
   background(0);
-  
-  // Draw spinning transparent sphere in the center
-  push();
-  translate(0, 0);
-  rotateY(angle);
-  let sphereColor = color(random(255), random(255), random(255), 100); // Random color with alpha value (transparency)
-  fill(sphereColor);
-  sphere(100);
-  pop();
-  angle += 0.01;
-
-  // Disco light effect for the sphere
-  if (millis() - discoTimer > discoInterval) {
-    let discoColor = color(random(255), random(255), random(255), 100); // Random color with alpha value (transparency)
-    fill(discoColor);
-    discoTimer = millis();
-  }
 
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
